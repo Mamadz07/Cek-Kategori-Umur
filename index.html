@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cek Kategori Umur</title>
+    <link rel="icon" href="jejak-harimau.jpg">
+    <style>
+        body{
+            display: grid;
+            font-family: sans-serif;
+            justify-content: center;
+            grid-template-columns: 500px;
+            
+        }
+        .container{
+           display: grid;
+            background-color: rgb(248, 245, 245);
+            box-shadow: 0px 0px 10px black;
+            justify-content: center;
+            border-radius: 10px;
+            padding-right: 30px;
+            justify-items: center;
+            margin-top: 200px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 400px;
+            
+        }
+        .container h2{
+            margin-left: 30px;
+        }
+         #umur{
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+        margin-left: 30px;
+        
+        }
+        button{
+            display: flex;
+            width: 100px;
+            height: 30px;
+           justify-content: center;
+           align-items: center;
+           background-color: rgb(0, 119, 255);
+           color: aliceblue;
+           margin-left: 30px;
+           
+        }
+        button:hover {
+            background-color: rgb(0, 0, 255);
+        }
+        
+        #hasil {
+            margin-top: 15px;
+            margin-left: 20px;
+            font-size: 15px;
+            font-weight: bold;
+        }
+        .reset{
+            display: block;
+            background-color: aliceblue;
+            color: black;
+            box-shadow: 1px 0px 2px black;
+            margin-left: 300px;
+            margin-top: -48px;
+            width: 60px;
+            height: 20px;
+        }
+        .reset:hover{
+            background-color: rgb(253, 237, 217);
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <h2 id="conten">Cek Kategori</h2>
+        <input type="number" id="umur" placeholder="Ketik Umurmu Disini">
+        <button class="reset" onclick="resetForm()">Reset</button>
+        <button onclick="cek()">Cek Kategori</button>
+        <p id="hasil"></p>
+    </div>
+<script>
+  
+ function cek(){
+    const usia =document.getElementById("umur").value;
+    const hasil = document.getElementById("hasil");
+
+    if (usia==="" || usia <0) {
+        hasil.textContent="Masukan Umurmu dengan Benar!!";
+        hasil.style.color= "red";
+        return;
+    }
+    if (usia>=101 && usia <900000000) {
+        hasil.textContent="Apakah Kamu Masih Hidup??";
+        hasil.style.color= "red";
+        return;
+    }
+    let kategori ="";
+    if (usia >= 0 && usia <= 12) {
+        kategori = "Anak-anak"
+        
+    } else if (usia >= 13 && usia <= 17) {
+        kategori = "Remaja"  
+    } else if (usia >= 17 && usia <= 59) {
+        kategori = "Dewasa"  
+    } else if (usia >= 60 && usia <= 100) {
+        kategori = "Lansia"  
+    }
+    hasil.textContent = `Umur Kamu ${usia} tahun, Kategori: ${kategori}`;
+    hasil.style.color="green"
+    
+ }
+ function resetForm() {
+            document.getElementById("umur").value = "";
+            let result = document.getElementById("result");
+            result.innerText = "";
+            result.style.backgroundColor = "transparent";
+ }
+</script>
+</body>
+</html>
